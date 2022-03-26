@@ -4,11 +4,19 @@ class NeumorphismButton extends StatefulWidget {
   final double? width;
   final double? height;
   final Widget child;
+  final EdgeInsetsGeometry? padding;
+  final BorderRadiusGeometry? borderRadius;
+  final Color? primaryColor;
+  final Color? elevatedColor;
 
   const NeumorphismButton({
     Key? key,
     this.width,
     this.height,
+    this.padding,
+    this.primaryColor = Colors.white,
+    this.borderRadius,
+    this.elevatedColor,
     required this.child,
   }) : super(key: key);
 
@@ -28,14 +36,44 @@ class _NeumorphismButtonState extends State<NeumorphismButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) => setIsElevated(true),
-      onTapUp: (_) => setIsElevated(false),
+      onTapDown: (_) {
+        //Evento disparado quando o usuário clica na tela
+        print('onTapDown');
+        setIsElevated(true);
+      },
+      onTapCancel: () {
+        //Evento disparado quando o usuário para de clicar na tela
+        print('onTapCancel');
+        setIsElevated(false);
+      },
+      onTapUp: (_) {
+        //Evento disparado quando o usuário para de clicar na tela
+        print('onTapDown');
+        setIsElevated(false);
+      },
+      onLongPress: () {
+        print('onLongPress');
+        setIsElevated(true);
+      },
+      onLongPressEnd: (_) {
+        print('onLongPressCancel');
+        setIsElevated(false);
+      },
+      onLongPressMoveUpdate: (_) {
+        print('onLongPressMoveUpdate');
+        setIsElevated(false);
+      },
       child: AnimatedContainer(
         width: widget.width,
         height: widget.height,
         duration: const Duration(milliseconds: 300),
-        decoration:
-            BoxDecoration(color: _isElevated ? Colors.grey[200] : Colors.white),
+        padding: widget.padding,
+        decoration: BoxDecoration(
+          borderRadius: widget.borderRadius,
+          color: _isElevated
+              ? widget.elevatedColor ?? Colors.grey[200]
+              : widget.primaryColor,
+        ),
         child: widget.child,
       ),
     );

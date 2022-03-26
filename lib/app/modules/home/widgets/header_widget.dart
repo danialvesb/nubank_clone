@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:nubank_clone/app/core/ui/widgets/rounded_buttom_ui.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({Key? key}) : super(key: key);
@@ -8,67 +9,35 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(5),
-      height: 200,
-      decoration: BoxDecoration(),
+      padding: const EdgeInsets.all(5),
+      height: 108,
+      decoration: const BoxDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  primary: Color(0xFF9B3BDA),
-                  elevation: 0,
-                ),
-                child: Icon(
-                  MdiIcons.accountOutline,
-                  color: Colors.white,
-                ),
+              RoundedButtomUi(
+                primaryColor: const Color(0xFF9B3BDA),
+                iconData: MdiIcons.accountOutline,
               ),
-              Spacer(),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  primary: Colors.transparent,
-                  elevation: 0,
-                ),
-                child: Icon(
-                  MdiIcons.eye,
-                  color: Colors.white,
-                ),
+              const Spacer(),
+              RoundedButtomUi(
+                primaryColor: Colors.transparent,
+                iconData: MdiIcons.eye,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  primary: Colors.transparent,
-                  elevation: 0,
-                ),
-                child: Icon(
-                  MdiIcons.helpCircleOutline,
-                  color: Colors.white,
-                ),
+              RoundedButtomUi(
+                primaryColor: Colors.transparent,
+                iconData: MdiIcons.helpCircleOutline,
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  primary: Colors.transparent,
-                  elevation: 0,
-                ),
-                child: Icon(
-                  MdiIcons.emailPlusOutline,
-                  color: Colors.white,
-                ),
-              ),
+              RoundedButtomUi(
+                primaryColor: Colors.transparent,
+                iconData: MdiIcons.emailPlusOutline,
+              )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
+          const Padding(
+            padding: EdgeInsets.all(15.0),
             child: Text('Olá Daniel',
                 style: TextStyle(
                   fontSize: 15,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nubank_clone/app/core/ui/widgets/neumorphism_button.dart';
+import 'package:nubank_clone/app/core/ui/widgets/rounded_buttom_ui.dart';
+import 'package:nubank_clone/app/modules/home/widgets/actions_widget.dart';
 import 'package:nubank_clone/app/modules/home/widgets/header_widget.dart';
+import 'package:nubank_clone/app/modules/home/widgets/suggestions_widget.dart';
 
 class HomeWidget extends StatelessWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -17,7 +20,6 @@ class HomeWidget extends StatelessWidget {
               const HeaderWidget(),
               Container(
                 width: double.infinity,
-                height: 500,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
@@ -66,33 +68,96 @@ class HomeWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              // minimumSize: Size(40, 40),
-                              shape: CircleBorder(),
-                              primary: Color(0xFF9B3BDA),
-                              elevation: 0,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Icon(
-                                MdiIcons.accountOutline,
-                                color: Colors.white,
+                    const ActionsWidget(),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: NeumorphismButton(
+                        width: double.infinity,
+                        height: 50,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        primaryColor: const Color(0XFFF0F1F5),
+                        elevatedColor: Colors.grey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            children: const [
+                              Icon(Icons.abc),
+                              SizedBox(
+                                width: 20,
                               ),
-                            ),
+                              Text('Meus cartões')
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    )
+                    ),
+                    const SuggestionsWidget(),
+                    Divider(),
+                    NeumorphismButton(
+                      width: double.infinity,
+                      height: 200,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: const [
+                                Text(
+                                  'Cartão de crédito',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Spacer(),
+                                Icon(
+                                  MdiIcons.chevronRight,
+                                  color: Colors.black,
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Divider(),
+                    NeumorphismButton(
+                      width: double.infinity,
+                      height: 200,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: const [
+                                Text(
+                                  'Emprestimo',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Spacer(),
+                                Icon(
+                                  MdiIcons.chevronRight,
+                                  color: Colors.black,
+                                )
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
